@@ -5,7 +5,7 @@ setup(
     description="pytest plugin for providing test coverage reports",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    version="v0.0.1",
+    version="v0.0.2",
     url="https://github.com/steinbergs-python-packages/pytest-coverage",
     author="Stephan Steinberg",
     author_email="st.steinberg@t-online.de",

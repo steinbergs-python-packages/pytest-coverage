@@ -21,7 +21,7 @@ class TestCoverage(object):
         """Start the test coverage as (and if) configured in .coveragerc."""
         if cls.cov is None:
             cls.cov = coverage.coverage()
-        if getattr(cls.cov.config, "config_files") or getattr(cls.cov.config, "config_files_read"):  # suporting 4.x and 5.x
+        if getattr(cls.cov.config, "config_files", None) or getattr(cls.cov.config, "config_files_read", None):  # suporting 4.x and 5.x
             cls.cov.start()
 
     @classmethod
@@ -29,7 +29,7 @@ class TestCoverage(object):
         """Stop the test coverage and create reports as (and if) configured in .coveragerc."""
         if cls.cov is None:
             return
-        if not cls.cov.config.config_files:
+        if not getattr(cls.cov.config, "config_files", None) and not getattr(cls.cov.config, "config_files_read", None):  # suporting 4.x and 5.x
             return
         cls.cov.stop()
         if cls.cov.config.data_file not in ("", ".coverage"):  # ignore default filename. if needed, use different filename.
